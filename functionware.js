@@ -1,6 +1,8 @@
 var
   Immutable= require( "immutable"),
-  Sagaware= require( "sagaware")
+  Sagaware= require( "sagaware"),
+  zalgo= require("./zalgo"),
+  IZ= zalgo.inverseZalgoStar
 
 function Functionware(){
 	var state= Sagaware({
@@ -51,19 +53,21 @@ function Functionware(){
 	function functionware(){
 		var
 		  args= arguments,
-		  result= state.get( "fns").reduce(( agg, fn, i) => {
+		  result= state.get( "fns").reduce( IZ(( prev, fn, i)=>{
 		  	var
 			  _acc= state.getIn([ "accept", i])
 			if( _acc){
 				// pass in Functionware state
-				_acc( agg, state, i)
+				fn= _acc( prev, fn, i, args, state)
 			}
-			// call
-			var
-			  _v= fn.apply( this, args)
-			// next
-			return _v
-		  }, undefined)
+			if( fn){
+				// call
+				var
+				  _v= fn.apply( this, args)
+				// next
+				return _v
+			}
+		  }), undefined)
 		return result
 	}
 	Object.defineProperty( functionware, "_functionware", {
