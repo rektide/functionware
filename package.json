@@ -1,0 +1,19 @@
+{
+	"name": "functionware",
+	"version": "1.0.0",
+	"description": "",
+	"main": "functionware.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.voodoowarez.com/functionware"
+	},
+	"author": "rektide de la faye",
+	"license": "X",
+	"dependencies": {
+		"cojs": "0.0.2",
+		"immutable": "^3.7.6"
+	}
+}
