@@ -26,7 +26,7 @@ function Functionware(){
 			throw new TypeError( "'accept' not a function")
 		}
 		if( pos=== undefined){
-			pos= fn.size
+			pos= fns.size
 		}else if( isNaN(pos)){
 			throw new TypeError( "'pos' not a number")
 		}
@@ -43,7 +43,7 @@ function Functionware(){
 			}
 		})
 		state.add= add
-		original.pushState( state)
+		original.putState( state)
 		return this
 	}
 	state.add= add
